@@ -117,13 +117,13 @@ function create_fragment(ctx) {
 			attr(link2, "type", "image/svg+xml");
 			attr(link2, "href", "/assets/logo.svg");
 			attr(link3, "rel", "stylesheet");
-			attr(link3, "href", "/assets/css/normalize.css");
+			attr(link3, "href", "assets/css/normalize.css");
 			attr(link4, "rel", "stylesheet");
-			attr(link4, "href", "/assets/css/skeleton.css");
+			attr(link4, "href", "assets/css/skeleton.css");
 			attr(link5, "rel", "stylesheet");
-			attr(link5, "href", "/assets/css/extended.css");
+			attr(link5, "href", "assets/css/extended.css");
 			attr(link6, "rel", "stylesheet");
-			attr(link6, "href", "/spa/bundle.css");
+			attr(link6, "href", "spa/bundle.css");
 		},
 		m(target, anchor) {
 			insert(target, head, anchor);
