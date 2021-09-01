@@ -1,0 +1,115 @@
+<html lang="en"><head><meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+
+  <title>Reproduction</title>
+
+  <script type="module" src="/spa/ejected/main.js"></script>
+
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@100;200;300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="icon" type="image/svg+xml" href="/assets/logo.svg">
+
+  <link rel="stylesheet" href="/assets/css/normalize.css">
+  <link rel="stylesheet" href="/assets/css/skeleton.css">
+  <link rel="stylesheet" href="/assets/css/extended.css">
+  <link rel="stylesheet" href="/spa/bundle.css"></head>
+
+<body class="isGrid svelte-cy5z2m"><section class="bts container isGrid svelte-6lsmv4"><header class="svelte-6lsmv4"><h1>reproduction sequence</h1>
+      <h5>how to reproduce this stuff after plenti update</h5></header>
+
+  <div class="components svelte-6lsmv4">
+
+    <div><h4>summary</h4>
+  <ul class="svelte-1fnivni"><li class="svelte-1fnivni">update plenti</li>
+    <li class="svelte-1fnivni">create new &#39;claxxmoldii&#39; with new plenti</li>
+    <li class="svelte-1fnivni">copy &#39;plenti.json&#39;</li>
+    <li class="svelte-1fnivni">recreate content type: &#39;behindthescenes&#39;</li>
+    <li class="svelte-1fnivni">copy &#39;index.json&#39; file</li>
+    <li class="svelte-1fnivni">copy &#39;global&#39; folder</li>
+    <li class="svelte-1fnivni">copy &#39;assets&#39; folder</li>
+    <li class="svelte-1fnivni">recreate content type: &#39;collections&#39;</li>
+    <li class="svelte-1fnivni">copy &#39;posts.json&#39; file</li>
+    <li class="svelte-1fnivni">recreate content type: &#39;posts&#39;</li>
+    <li class="svelte-1fnivni">test! test! test!</li></ul></div>
+
+<h4>steps</h4>
+<ul class="svelte-1fnivni"><li class="svelte-1fnivni">update plenti:</li>
+  <li class="svelte-1fnivni">update plenti with homebrew</li>    
+  <li class="svelte-1fnivni"><code class="svelte-1fnivni">brew upgrade plenti</code></li>
+  <br>
+
+  <li class="svelte-1fnivni">create new &#39;claxxmoldii&#39; with new plenti:</li>
+  <li class="svelte-1fnivni">rename &#39;claxxmoldii&#39; folder to &#39;claxxmolidd-old&#39;</li>
+  <li class="svelte-1fnivni">create plenti new site</li>
+  <li class="svelte-1fnivni"><code class="svelte-1fnivni">plenti new site claxxmoldii</code></li>
+  <br>
+
+  <li class="svelte-1fnivni">copy &#39;plenti.json&#39;:</li>
+  <br>
+
+  <li class="svelte-1fnivni">recreate content type: &#39;behindthescenes&#39;:</li>
+  <li class="svelte-1fnivni"><code class="svelte-1fnivni">plenti new type behindthescenes</code></li>
+  <li class="svelte-1fnivni">copy &#39;content/behindthescenes&#39; folder contents (its .json files)</li>
+  <li class="svelte-1fnivni">copy &#39;layouts/components/behindthescenes&#39; folder (its .svelte components)</li>
+  <li class="svelte-1fnivni">update buildlog.svelte</li>
+  <li class="svelte-1fnivni">browser test...</li>
+  <br>
+
+  <li class="svelte-1fnivni">copy &#39;index.json&#39; file:</li>
+  <li class="svelte-1fnivni">copy &#39;content/index.json&#39; file</li>
+  <li class="svelte-1fnivni">copy &#39;layouts/content/index.svelte&#39; file</li>
+  <li class="svelte-1fnivni">browser test...</li>
+  <br>
+
+  <li class="svelte-1fnivni">copy &#39;global&#39; folder:</li>
+  <li class="svelte-1fnivni">copy &#39;layouts/global&#39; folder (its .svelte files)</li>
+  <li class="svelte-1fnivni">browser test...</li>
+  <br>
+
+  <li class="svelte-1fnivni">copy &#39;assets&#39; folder</li>
+  <li class="svelte-1fnivni">browser test...</li>
+  <br>
+
+  <li class="svelte-1fnivni">recreate content type &#39;collections&#39;:</li>
+  <li class="svelte-1fnivni"><code class="svelte-1fnivni">plenti new type collections</code></li>
+  <li class="svelte-1fnivni">copy &#39;content/collections&#39; folder contents (its .json files)</li>
+  <li class="svelte-1fnivni">copy &#39;layouts/content/collections.svelte&#39; file</li>
+  <li class="svelte-1fnivni">copy &#39;layouts/components/collections&#39; folder (its .json files)</li>
+  <li class="svelte-1fnivni">browser test...</li>
+  <br>
+
+  <li class="svelte-1fnivni">copy &#39;posts.json&#39; file:</li>  
+  <li class="svelte-1fnivni">copy &#39;content/pages/posts.json&#39; file</li>
+  <li class="svelte-1fnivni">recreate content type &#39;posts&#39;</li>
+  <li class="svelte-1fnivni"><code class="svelte-1fnivni">plenti new type collections</code></li>
+  <li class="svelte-1fnivni">copy &#39;layouts/content/posts.svelte&#39; file</li>
+  <li class="svelte-1fnivni">copy &#39;layouts/components/posts&#39; folder</li>
+  <li class="svelte-1fnivni">copy &#39;layouts/components/recentposts.svelte&#39; file</li>
+  <li class="svelte-1fnivni">browser test...</li>
+  <br>
+
+  <li class="svelte-1fnivni">check terminal error messages</li>
+  <br>
+</ul>
+
+    
+
+    </div>
+
+</section>
+
+  <footer class="isFlexCentered"><footer class=" svelte-1mxyyrc"><span>© 2021
+    <a class=" svelte-1mxyyrc" href="/">claxx moldii
+    </a></span>
+  <span>·</span>
+  <span>Powered by
+    <a class=" svelte-1mxyyrc" href="https://plenti.co/" rel="" target="_blank">Plenti</a></span>
+  <span>·</span>
+  <span>Theme
+    <a class=" svelte-1mxyyrc" href="https://themes.gohugo.io/theme/manis-hugo-theme/" rel="noopener" target="_blank">Manis-ish
+    </a></span>
+</footer></footer>
+
+<script src="https://kit.fontawesome.com/80f1b342a4.js" crossorigin="anonymous"></script></body>
+</html>
