@@ -45,7 +45,8 @@ function create_fragment(ctx) {
 
 	head = new Head({
 			props: {
-				title: makeTitle(/*content*/ ctx[0].filename)
+				title: makeTitle(/*content*/ ctx[0].filename),
+				env: /*env*/ ctx[4]
 			}
 		});
 
@@ -136,6 +137,7 @@ function create_fragment(ctx) {
 		p(ctx, [dirty]) {
 			const head_changes = {};
 			if (dirty & /*content*/ 1) head_changes.title = makeTitle(/*content*/ ctx[0].filename);
+			if (dirty & /*env*/ 16) head_changes.env = /*env*/ ctx[4];
 			head.$set(head_changes);
 
 			const switch_instance_changes = (dirty & /*content, allContent, allLayouts*/ 13)
@@ -197,16 +199,18 @@ function instance($$self, $$props, $$invalidate) {
 	let { content } = $$props,
 		{ layout } = $$props,
 		{ allContent } = $$props,
-		{ allLayouts } = $$props;
+		{ allLayouts } = $$props,
+		{ env } = $$props;
 
 	$$self.$$set = $$props => {
 		if ("content" in $$props) $$invalidate(0, content = $$props.content);
 		if ("layout" in $$props) $$invalidate(1, layout = $$props.layout);
 		if ("allContent" in $$props) $$invalidate(2, allContent = $$props.allContent);
 		if ("allLayouts" in $$props) $$invalidate(3, allLayouts = $$props.allLayouts);
+		if ("env" in $$props) $$invalidate(4, env = $$props.env);
 	};
 
-	return [content, layout, allContent, allLayouts];
+	return [content, layout, allContent, allLayouts, env];
 }
 
 class Component extends SvelteComponent {
@@ -217,7 +221,8 @@ class Component extends SvelteComponent {
 			content: 0,
 			layout: 1,
 			allContent: 2,
-			allLayouts: 3
+			allLayouts: 3,
+			env: 4
 		});
 	}
 }
