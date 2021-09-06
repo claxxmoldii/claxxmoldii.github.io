@@ -1,1 +1,1 @@
-export let env = { local: false, baseurl: 'claxxmoldii.github.io/'};
+export let env = { local: false, baseurl: 'claxxmoldii.github.io'};
