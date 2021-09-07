@@ -251,6 +251,11 @@ function create_fragment(ctx) {
 	let t137;
 	let span36;
 	let t138;
+	let t139;
+	let li47;
+	let t140;
+	let span37;
+	let t141;
 
 	return {
 		c() {
@@ -487,6 +492,11 @@ function create_fragment(ctx) {
 			t137 = text("update good! move on! yosh! go!");
 			span36 = element("span");
 			t138 = text("/2021.08.14");
+			t139 = space();
+			li47 = element("li");
+			t140 = text("good save... i think i don't need the env base thing here just yet. commit this!");
+			span37 = element("span");
+			t141 = text("/2021.09.07");
 			this.h();
 		},
 		l(nodes) {
@@ -892,6 +902,15 @@ function create_fragment(ctx) {
 			t138 = claim_text(span36_nodes, "/2021.08.14");
 			span36_nodes.forEach(detach);
 			li46_nodes.forEach(detach);
+			t139 = claim_space(ul_nodes);
+			li47 = claim_element(ul_nodes, "LI", { class: true });
+			var li47_nodes = children(li47);
+			t140 = claim_text(li47_nodes, "good save... i think i don't need the env base thing here just yet. commit this!");
+			span37 = claim_element(li47_nodes, "SPAN", { class: true });
+			var span37_nodes = children(span37);
+			t141 = claim_text(span37_nodes, "/2021.09.07");
+			span37_nodes.forEach(detach);
+			li47_nodes.forEach(detach);
 			ul_nodes.forEach(detach);
 			this.h();
 		},
@@ -980,6 +999,8 @@ function create_fragment(ctx) {
 			attr(li45, "class", "svelte-2joece");
 			attr(span36, "class", "date svelte-2joece");
 			attr(li46, "class", "svelte-2joece");
+			attr(span37, "class", "date svelte-2joece");
+			attr(li47, "class", "svelte-2joece");
 			attr(ul, "class", "svelte-2joece");
 		},
 		m(target, anchor) {
@@ -1216,6 +1237,11 @@ function create_fragment(ctx) {
 			append(li46, t137);
 			append(li46, span36);
 			append(span36, t138);
+			append(ul, t139);
+			append(ul, li47);
+			append(li47, t140);
+			append(li47, span37);
+			append(span37, t141);
 		},
 		p: noop,
 		i: noop,
