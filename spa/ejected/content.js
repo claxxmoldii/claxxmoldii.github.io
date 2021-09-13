@@ -189,6 +189,33 @@ const allContent = [{
 
 },{
 "pager": 1,
+"path": "posts/ablogpost",
+"type": "posts",
+"filename": "ablogpost.json",
+"fields":   {
+  "title": "a blog post",
+  "year": "2021",
+  "month": "2021.09",
+  "date": "2021.09.07",
+  "readTime": "4 mins-ish",
+  "author": "claxx moldii",
+  "pic": "",
+  "caption": "",
+  "teaser": "woohoo...",
+  "body": [
+    "hello! thank you for coming!",
+    " this is my blog about webdev and webdevvy stuff. i hope you enjoy and pick stuff up from these posts, which more would be coming out soon.",
+    "web development is something that' i've been into for twenty or so years. and my journey is anything but smooth (future post).",
+    "anyway, i hope this works out as a short intro-ish.",
+    "have a great day!"
+  ],
+  "tag": "eh...",
+  "category": "perhaps",
+  "post": true
+}
+
+},{
+"pager": 1,
 "path": "posts/littlenap",
 "type": "posts",
 "filename": "littlenap.json",
