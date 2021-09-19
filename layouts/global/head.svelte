@@ -21,5 +21,5 @@
   <link rel='stylesheet' href='/assets/css/skeleton.css'>
   <link rel='stylesheet' href='/assets/css/extended.css'>
 
-  <link rel='stylesheet' href='spa/bundle.css'>
+  <link rel='stylesheet' href='/spa/bundle.css'>
 </head>
