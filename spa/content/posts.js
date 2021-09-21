@@ -7,6 +7,7 @@ import {
 	claim_element,
 	claim_space,
 	claim_text,
+	destroy_each,
 	detach,
 	element,
 	init,
@@ -17,6 +18,39 @@ import {
 	space,
 	text
 } from '../web_modules/svelte/internal/index.mjs';
+
+function get_each_context(ctx, list, i) {
+	const child_ctx = ctx.slice();
+	child_ctx[7] = list[i];
+	return child_ctx;
+}
+
+// (21:6) {#each body as paragraph}
+function create_each_block(ctx) {
+	let p;
+	let raw_value = /*paragraph*/ ctx[7] + "";
+
+	return {
+		c() {
+			p = element("p");
+		},
+		l(nodes) {
+			p = claim_element(nodes, "P", {});
+			var p_nodes = children(p);
+			p_nodes.forEach(detach);
+		},
+		m(target, anchor) {
+			insert(target, p, anchor);
+			p.innerHTML = raw_value;
+		},
+		p(ctx, dirty) {
+			if (dirty & /*body*/ 64 && raw_value !== (raw_value = /*paragraph*/ ctx[7] + "")) p.innerHTML = raw_value;;
+		},
+		d(detaching) {
+			if (detaching) detach(p);
+		}
+	};
+}
 
 function create_fragment(ctx) {
 	let section;
@@ -43,6 +77,12 @@ function create_fragment(ctx) {
 	let t11;
 	let t12;
 	let article;
+	let each_value = /*body*/ ctx[6];
+	let each_blocks = [];
+
+	for (let i = 0; i < each_value.length; i += 1) {
+		each_blocks[i] = create_each_block(get_each_context(ctx, each_value, i));
+	}
 
 	return {
 		c() {
@@ -69,6 +109,11 @@ function create_fragment(ctx) {
 			t11 = text(/*author*/ ctx[3]);
 			t12 = space();
 			article = element("article");
+
+			for (let i = 0; i < each_blocks.length; i += 1) {
+				each_blocks[i].c();
+			}
+
 			this.h();
 		},
 		l(nodes) {
@@ -111,6 +156,11 @@ function create_fragment(ctx) {
 			t12 = claim_space(section_nodes);
 			article = claim_element(section_nodes, "ARTICLE", { class: true });
 			var article_nodes = children(article);
+
+			for (let i = 0; i < each_blocks.length; i += 1) {
+				each_blocks[i].l(article_nodes);
+			}
+
 			article_nodes.forEach(detach);
 			section_nodes.forEach(detach);
 			this.h();
@@ -152,7 +202,10 @@ function create_fragment(ctx) {
 			append(span2, t11);
 			append(section, t12);
 			append(section, article);
-			article.innerHTML = /*body*/ ctx[6];
+
+			for (let i = 0; i < each_blocks.length; i += 1) {
+				each_blocks[i].m(article, null);
+			}
 		},
 		p(ctx, [dirty]) {
 			if (dirty & /*pic*/ 16 && img.src !== (img_src_value = "/assets/images/" + /*pic*/ ctx[4])) {
@@ -164,12 +217,35 @@ function create_fragment(ctx) {
 			if (dirty & /*date*/ 2) set_data(t5, /*date*/ ctx[1]);
 			if (dirty & /*readTime*/ 4) set_data(t8, /*readTime*/ ctx[2]);
 			if (dirty & /*author*/ 8) set_data(t11, /*author*/ ctx[3]);
-			if (dirty & /*body*/ 64) article.innerHTML = /*body*/ ctx[6];;
+
+			if (dirty & /*body*/ 64) {
+				each_value = /*body*/ ctx[6];
+				let i;
+
+				for (i = 0; i < each_value.length; i += 1) {
+					const child_ctx = get_each_context(ctx, each_value, i);
+
+					if (each_blocks[i]) {
+						each_blocks[i].p(child_ctx, dirty);
+					} else {
+						each_blocks[i] = create_each_block(child_ctx);
+						each_blocks[i].c();
+						each_blocks[i].m(article, null);
+					}
+				}
+
+				for (; i < each_blocks.length; i += 1) {
+					each_blocks[i].d(1);
+				}
+
+				each_blocks.length = each_value.length;
+			}
 		},
 		i: noop,
 		o: noop,
 		d(detaching) {
 			if (detaching) detach(section);
+			destroy_each(each_blocks, detaching);
 		}
 	};
 }

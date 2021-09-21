@@ -256,6 +256,11 @@ function create_fragment(ctx) {
 	let t140;
 	let span37;
 	let t141;
+	let t142;
+	let li48;
+	let t143;
+	let span38;
+	let t144;
 
 	return {
 		c() {
@@ -497,6 +502,11 @@ function create_fragment(ctx) {
 			t140 = text("good save... i think i don't need the env base thing here just yet. commit this!");
 			span37 = element("span");
 			t141 = text("/2021.09.07");
+			t142 = space();
+			li48 = element("li");
+			t143 = text("css not loading on refresh, fixed by jim fisk. issue is leading front-slash on link tag inside head.svelte. yey! pull changes from origin and merged with local. woohoo! game on! ");
+			span38 = element("span");
+			t144 = text("/2021.09.21");
 			this.h();
 		},
 		l(nodes) {
@@ -911,6 +921,15 @@ function create_fragment(ctx) {
 			t141 = claim_text(span37_nodes, "/2021.09.07");
 			span37_nodes.forEach(detach);
 			li47_nodes.forEach(detach);
+			t142 = claim_space(ul_nodes);
+			li48 = claim_element(ul_nodes, "LI", { class: true });
+			var li48_nodes = children(li48);
+			t143 = claim_text(li48_nodes, "css not loading on refresh, fixed by jim fisk. issue is leading front-slash on link tag inside head.svelte. yey! pull changes from origin and merged with local. woohoo! game on! ");
+			span38 = claim_element(li48_nodes, "SPAN", { class: true });
+			var span38_nodes = children(span38);
+			t144 = claim_text(span38_nodes, "/2021.09.21");
+			span38_nodes.forEach(detach);
+			li48_nodes.forEach(detach);
 			ul_nodes.forEach(detach);
 			this.h();
 		},
@@ -1001,6 +1020,8 @@ function create_fragment(ctx) {
 			attr(li46, "class", "svelte-2joece");
 			attr(span37, "class", "date svelte-2joece");
 			attr(li47, "class", "svelte-2joece");
+			attr(span38, "class", "date svelte-2joece");
+			attr(li48, "class", "svelte-2joece");
 			attr(ul, "class", "svelte-2joece");
 		},
 		m(target, anchor) {
@@ -1242,6 +1263,11 @@ function create_fragment(ctx) {
 			append(li47, t140);
 			append(li47, span37);
 			append(span37, t141);
+			append(ul, t142);
+			append(ul, li48);
+			append(li48, t143);
+			append(li48, span38);
+			append(span38, t144);
 		},
 		p: noop,
 		i: noop,
