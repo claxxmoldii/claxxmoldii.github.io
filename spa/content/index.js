@@ -148,13 +148,7 @@ function create_fragment(ctx) {
 	};
 }
 
-let postsPerPage = 3;
-
 function instance($$self, $$props, $$invalidate) {
-	let currentPage;
-	let postRangeHigh;
-	let postRangeLow;
-
 	let { title } = $$props,
 		{ intro } = $$props,
 		{ components } = $$props,
@@ -169,10 +163,6 @@ function instance($$self, $$props, $$invalidate) {
 		return Math.floor(Math.random() * (max - min + 1) + min);
 	}; //The maximum is inclusive and the minimum is inclusive
 
-	let allPosts = allContent.filter(content => content.type == "blog");
-	let totalPosts = allPosts.length;
-	let totalPages = Math.ceil(totalPosts / postsPerPage);
-
 	$$self.$$set = $$props => {
 		if ("title" in $$props) $$invalidate(0, title = $$props.title);
 		if ("intro" in $$props) $$invalidate(4, intro = $$props.intro);
@@ -183,32 +173,7 @@ function instance($$self, $$props, $$invalidate) {
 		if ("tagline" in $$props) $$invalidate(2, tagline = $$props.tagline);
 	};
 
-	$$self.$$.update = () => {
-		if ($$self.$$.dirty & /*content*/ 64) {
-			$: $$invalidate(8, currentPage = content.pager);
-		}
-
-		if ($$self.$$.dirty & /*currentPage*/ 256) {
-			$: $$invalidate(9, postRangeHigh = currentPage * postsPerPage);
-		}
-
-		if ($$self.$$.dirty & /*postRangeHigh*/ 512) {
-			$: postRangeLow = postRangeHigh - postsPerPage;
-		}
-	};
-
-	return [
-		title,
-		current,
-		tagline,
-		tagNum,
-		intro,
-		components,
-		content,
-		allContent,
-		currentPage,
-		postRangeHigh
-	];
+	return [title, current, tagline, tagNum, intro, components, content, allContent];
 }
 
 class Component extends SvelteComponent {

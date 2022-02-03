@@ -21,48 +21,53 @@ function create_fragment(ctx) {
 	let footer;
 	let span0;
 	let t0;
-	let a0;
+	let t1_value = new Date().getFullYear() + "";
 	let t1;
 	let t2;
-	let span1;
+	let a0;
 	let t3;
 	let t4;
-	let span2;
+	let span1;
 	let t5;
-	let a1;
 	let t6;
+	let span2;
 	let t7;
-	let span3;
+	let a1;
 	let t8;
 	let t9;
-	let span4;
+	let span3;
 	let t10;
-	let a2;
 	let t11;
+	let span4;
+	let t12;
+	let a2;
+	let t13;
 
 	return {
 		c() {
 			footer = element("footer");
 			span0 = element("span");
-			t0 = text("© 2021\n    ");
-			a0 = element("a");
-			t1 = text("claxx moldii");
+			t0 = text("© ");
+			t1 = text(t1_value);
 			t2 = space();
-			span1 = element("span");
-			t3 = text("·");
+			a0 = element("a");
+			t3 = text("claxx moldii");
 			t4 = space();
+			span1 = element("span");
+			t5 = text("·");
+			t6 = space();
 			span2 = element("span");
-			t5 = text("Powered by\n    ");
+			t7 = text("Powered by\n    ");
 			a1 = element("a");
-			t6 = text("Plenti");
-			t7 = space();
-			span3 = element("span");
-			t8 = text("·");
+			t8 = text("Plenti");
 			t9 = space();
+			span3 = element("span");
+			t10 = text("·");
+			t11 = space();
 			span4 = element("span");
-			t10 = text("Theme\n    ");
+			t12 = text("Theme inspired by\n    ");
 			a2 = element("a");
-			t11 = text("Manis-ish");
+			t13 = text("Manis");
 			this.h();
 		},
 		l(nodes) {
@@ -70,21 +75,23 @@ function create_fragment(ctx) {
 			var footer_nodes = children(footer);
 			span0 = claim_element(footer_nodes, "SPAN", {});
 			var span0_nodes = children(span0);
-			t0 = claim_text(span0_nodes, "© 2021\n    ");
+			t0 = claim_text(span0_nodes, "© ");
+			t1 = claim_text(span0_nodes, t1_value);
+			t2 = claim_space(span0_nodes);
 			a0 = claim_element(span0_nodes, "A", { class: true, href: true });
 			var a0_nodes = children(a0);
-			t1 = claim_text(a0_nodes, "claxx moldii");
+			t3 = claim_text(a0_nodes, "claxx moldii");
 			a0_nodes.forEach(detach);
 			span0_nodes.forEach(detach);
-			t2 = claim_space(footer_nodes);
+			t4 = claim_space(footer_nodes);
 			span1 = claim_element(footer_nodes, "SPAN", {});
 			var span1_nodes = children(span1);
-			t3 = claim_text(span1_nodes, "·");
+			t5 = claim_text(span1_nodes, "·");
 			span1_nodes.forEach(detach);
-			t4 = claim_space(footer_nodes);
+			t6 = claim_space(footer_nodes);
 			span2 = claim_element(footer_nodes, "SPAN", {});
 			var span2_nodes = children(span2);
-			t5 = claim_text(span2_nodes, "Powered by\n    ");
+			t7 = claim_text(span2_nodes, "Powered by\n    ");
 
 			a1 = claim_element(span2_nodes, "A", {
 				class: true,
@@ -94,18 +101,18 @@ function create_fragment(ctx) {
 			});
 
 			var a1_nodes = children(a1);
-			t6 = claim_text(a1_nodes, "Plenti");
+			t8 = claim_text(a1_nodes, "Plenti");
 			a1_nodes.forEach(detach);
 			span2_nodes.forEach(detach);
-			t7 = claim_space(footer_nodes);
+			t9 = claim_space(footer_nodes);
 			span3 = claim_element(footer_nodes, "SPAN", {});
 			var span3_nodes = children(span3);
-			t8 = claim_text(span3_nodes, "·");
+			t10 = claim_text(span3_nodes, "·");
 			span3_nodes.forEach(detach);
-			t9 = claim_space(footer_nodes);
+			t11 = claim_space(footer_nodes);
 			span4 = claim_element(footer_nodes, "SPAN", {});
 			var span4_nodes = children(span4);
-			t10 = claim_text(span4_nodes, "Theme\n    ");
+			t12 = claim_text(span4_nodes, "Theme inspired by\n    ");
 
 			a2 = claim_element(span4_nodes, "A", {
 				class: true,
@@ -115,7 +122,7 @@ function create_fragment(ctx) {
 			});
 
 			var a2_nodes = children(a2);
-			t11 = claim_text(a2_nodes, "Manis-ish");
+			t13 = claim_text(a2_nodes, "Manis");
 			a2_nodes.forEach(detach);
 			span4_nodes.forEach(detach);
 			footer_nodes.forEach(detach);
@@ -129,7 +136,7 @@ function create_fragment(ctx) {
 			attr(a1, "rel", "");
 			attr(a1, "target", "_blank");
 			attr(a2, "class", " svelte-1mxyyrc");
-			attr(a2, "href", "https://themes.gohugo.io/theme/manis-hugo-theme/");
+			attr(a2, "href", "https://github.com/yursan9/manis-hugo-theme");
 			attr(a2, "rel", "noopener");
 			attr(a2, "target", "_blank");
 			attr(footer, "class", " svelte-1mxyyrc");
@@ -138,24 +145,26 @@ function create_fragment(ctx) {
 			insert(target, footer, anchor);
 			append(footer, span0);
 			append(span0, t0);
+			append(span0, t1);
+			append(span0, t2);
 			append(span0, a0);
-			append(a0, t1);
-			append(footer, t2);
-			append(footer, span1);
-			append(span1, t3);
+			append(a0, t3);
 			append(footer, t4);
+			append(footer, span1);
+			append(span1, t5);
+			append(footer, t6);
 			append(footer, span2);
-			append(span2, t5);
+			append(span2, t7);
 			append(span2, a1);
-			append(a1, t6);
-			append(footer, t7);
-			append(footer, span3);
-			append(span3, t8);
+			append(a1, t8);
 			append(footer, t9);
+			append(footer, span3);
+			append(span3, t10);
+			append(footer, t11);
 			append(footer, span4);
-			append(span4, t10);
+			append(span4, t12);
 			append(span4, a2);
-			append(a2, t11);
+			append(a2, t13);
 		},
 		p: noop,
 		i: noop,

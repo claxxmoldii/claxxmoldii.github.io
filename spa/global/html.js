@@ -45,8 +45,7 @@ function create_fragment(ctx) {
 
 	head = new Head({
 			props: {
-				title: makeTitle(/*content*/ ctx[0].filename),
-				env: /*env*/ ctx[4]
+				title: makeTitle(/*content*/ ctx[0].filename)
 			}
 		});
 
@@ -137,7 +136,6 @@ function create_fragment(ctx) {
 		p(ctx, [dirty]) {
 			const head_changes = {};
 			if (dirty & /*content*/ 1) head_changes.title = makeTitle(/*content*/ ctx[0].filename);
-			if (dirty & /*env*/ 16) head_changes.env = /*env*/ ctx[4];
 			head.$set(head_changes);
 
 			const switch_instance_changes = (dirty & /*content, allContent, allLayouts*/ 13)

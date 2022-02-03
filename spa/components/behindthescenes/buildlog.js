@@ -261,6 +261,11 @@ function create_fragment(ctx) {
 	let t143;
 	let span38;
 	let t144;
+	let t145;
+	let li49;
+	let t146;
+	let span39;
+	let t147;
 
 	return {
 		c() {
@@ -507,6 +512,11 @@ function create_fragment(ctx) {
 			t143 = text("css not loading on refresh, fixed by jim fisk. issue is leading front-slash on link tag inside head.svelte. yey! pull changes from origin and merged with local. woohoo! game on! ");
 			span38 = element("span");
 			t144 = text("/2021.09.21");
+			t145 = space();
+			li49 = element("li");
+			t146 = text("updated to plenti v.0.5.00 ");
+			span39 = element("span");
+			t147 = text("/2022.01.21");
 			this.h();
 		},
 		l(nodes) {
@@ -930,6 +940,15 @@ function create_fragment(ctx) {
 			t144 = claim_text(span38_nodes, "/2021.09.21");
 			span38_nodes.forEach(detach);
 			li48_nodes.forEach(detach);
+			t145 = claim_space(ul_nodes);
+			li49 = claim_element(ul_nodes, "LI", { class: true });
+			var li49_nodes = children(li49);
+			t146 = claim_text(li49_nodes, "updated to plenti v.0.5.00 ");
+			span39 = claim_element(li49_nodes, "SPAN", { class: true });
+			var span39_nodes = children(span39);
+			t147 = claim_text(span39_nodes, "/2022.01.21");
+			span39_nodes.forEach(detach);
+			li49_nodes.forEach(detach);
 			ul_nodes.forEach(detach);
 			this.h();
 		},
@@ -1022,6 +1041,8 @@ function create_fragment(ctx) {
 			attr(li47, "class", "svelte-2joece");
 			attr(span38, "class", "date svelte-2joece");
 			attr(li48, "class", "svelte-2joece");
+			attr(span39, "class", "date rebuild svelte-2joece");
+			attr(li49, "class", "svelte-2joece");
 			attr(ul, "class", "svelte-2joece");
 		},
 		m(target, anchor) {
@@ -1268,6 +1289,11 @@ function create_fragment(ctx) {
 			append(li48, t143);
 			append(li48, span38);
 			append(span38, t144);
+			append(ul, t145);
+			append(ul, li49);
+			append(li49, t146);
+			append(li49, span39);
+			append(span39, t147);
 		},
 		p: noop,
 		i: noop,

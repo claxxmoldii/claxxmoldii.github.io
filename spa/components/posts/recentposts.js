@@ -19,6 +19,8 @@ import {
 	text
 } from '../../web_modules/svelte/internal/index.mjs';
 
+import { sortByDate } from '../../scripts/sort_by_date.js';
+
 function get_each_context(ctx, list, i) {
 	const child_ctx = ctx.slice();
 	child_ctx[2] = list[i];
@@ -26,10 +28,10 @@ function get_each_context(ctx, list, i) {
 	return child_ctx;
 }
 
-// (11:6) {#if i >= 0 && i < 3}
+// (16:6) {#if i >= 0 && i < 3}
 function create_if_block(ctx) {
 	let li;
-	let t0_value = /*post*/ ctx[2].fields.date + "";
+	let t0_value = /*post*/ ctx[2].fields.date.replaceAll("/", ".") + "";
 	let t0;
 	let t1;
 	let a;
@@ -60,8 +62,8 @@ function create_if_block(ctx) {
 		},
 		h() {
 			attr(a, "href", a_href_value = /*post*/ ctx[2].path);
-			attr(a, "class", "svelte-xo3bau");
-			attr(li, "class", "svelte-xo3bau");
+			attr(a, "class", "svelte-ocr6vr");
+			attr(li, "class", "svelte-ocr6vr");
 		},
 		m(target, anchor) {
 			insert(target, li, anchor);
@@ -77,7 +79,7 @@ function create_if_block(ctx) {
 	};
 }
 
-// (10:4) {#each allPosts as post, i}
+// (15:4) {#each allPosts as post, i}
 function create_each_block(ctx) {
 	let if_block_anchor;
 	let if_block = /*i*/ ctx[4] >= 0 && /*i*/ ctx[4] < 3 && create_if_block(ctx);
@@ -113,6 +115,10 @@ function create_fragment(ctx) {
 	let ul;
 	let t2;
 	let hr;
+	let t3;
+	let div;
+	let a;
+	let t4;
 	let each_value = /*allPosts*/ ctx[0];
 	let each_blocks = [];
 
@@ -134,6 +140,10 @@ function create_fragment(ctx) {
 
 			t2 = space();
 			hr = element("hr");
+			t3 = space();
+			div = element("div");
+			a = element("a");
+			t4 = text("complete posts list");
 			this.h();
 		},
 		l(nodes) {
@@ -152,15 +162,26 @@ function create_fragment(ctx) {
 			}
 
 			ul_nodes.forEach(detach);
+			t2 = claim_space(section_nodes);
+			hr = claim_element(section_nodes, "HR", { class: true });
+			t3 = claim_space(section_nodes);
+			div = claim_element(section_nodes, "DIV", { class: true });
+			var div_nodes = children(div);
+			a = claim_element(div_nodes, "A", { class: true, href: true });
+			var a_nodes = children(a);
+			t4 = claim_text(a_nodes, "complete posts list");
+			a_nodes.forEach(detach);
+			div_nodes.forEach(detach);
 			section_nodes.forEach(detach);
-			t2 = claim_space(nodes);
-			hr = claim_element(nodes, "HR", { class: true });
 			this.h();
 		},
 		h() {
-			attr(h3, "class", "svelte-xo3bau");
-			attr(section, "class", "svelte-xo3bau");
-			attr(hr, "class", "sep svelte-xo3bau");
+			attr(h3, "class", "svelte-ocr6vr");
+			attr(hr, "class", "sep svelte-ocr6vr");
+			attr(a, "class", " svelte-ocr6vr");
+			attr(a, "href", "/completeposts");
+			attr(div, "class", "completeposts svelte-ocr6vr");
+			attr(section, "class", "svelte-ocr6vr");
 		},
 		m(target, anchor) {
 			insert(target, section, anchor);
@@ -173,8 +194,12 @@ function create_fragment(ctx) {
 				each_blocks[i].m(ul, null);
 			}
 
-			insert(target, t2, anchor);
-			insert(target, hr, anchor);
+			append(section, t2);
+			append(section, hr);
+			append(section, t3);
+			append(section, div);
+			append(div, a);
+			append(a, t4);
 		},
 		p(ctx, [dirty]) {
 			if (dirty & /*allPosts*/ 1) {
@@ -205,15 +230,13 @@ function create_fragment(ctx) {
 		d(detaching) {
 			if (detaching) detach(section);
 			destroy_each(each_blocks, detaching);
-			if (detaching) detach(t2);
-			if (detaching) detach(hr);
 		}
 	};
 }
 
 function instance($$self, $$props, $$invalidate) {
 	let { allContent } = $$props;
-	let allPosts = allContent.filter(content => content.type == "posts");
+	let allPosts = sortByDate(allContent.filter(content => content.type == "posts"));
 
 	$$self.$$set = $$props => {
 		if ("allContent" in $$props) $$invalidate(1, allContent = $$props.allContent);

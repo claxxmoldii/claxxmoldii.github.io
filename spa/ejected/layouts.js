@@ -9,6 +9,9 @@ export {default as layouts_components_collections_toolbox_svelte} from '../compo
 export {default as layouts_components_collections_toolcart_svelte} from '../components/collections/toolcart.js';
 export {default as layouts_components_pages_about_svelte} from '../components/pages/about.js';
 export {default as layouts_components_posts_areallygoodpost_svelte} from '../components/posts/areallygoodpost.js';
+export {default as layouts_components_posts_completeposts_svelte} from '../components/posts/completeposts.js';
+export {default as layouts_components_posts_pager_svelte} from '../components/posts/pager.js';
+export {default as layouts_components_posts_pejjinetaur_svelte} from '../components/posts/pejjinetaur.js';
 export {default as layouts_components_posts_postsTemplate_svelte} from '../components/posts/postsTemplate.js';
 export {default as layouts_components_posts_recentposts_svelte} from '../components/posts/recentposts.js';
 export {default as layouts_content_404_svelte} from '../content/404.js';

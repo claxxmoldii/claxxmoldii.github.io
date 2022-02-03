@@ -28,8 +28,53 @@ import {
 
 import Nav from '../global/nav.js';
 import RecentPosts from '../components/posts/recentposts.js';
+import Completeposts from '../components/posts/completeposts.js';
 import About from '../components/pages/about.js';
 
+function create_if_block_3(ctx) {
+	let completeposts;
+	let current;
+
+	completeposts = new Completeposts({
+			props: {
+				allPosts: /*allPosts*/ ctx[7],
+				allContent: /*allContent*/ ctx[6]
+			}
+		});
+
+	return {
+		c() {
+			create_component(completeposts.$$.fragment);
+		},
+		l(nodes) {
+			claim_component(completeposts.$$.fragment, nodes);
+		},
+		m(target, anchor) {
+			mount_component(completeposts, target, anchor);
+			current = true;
+		},
+		p(ctx, dirty) {
+			const completeposts_changes = {};
+			if (dirty & /*allPosts*/ 128) completeposts_changes.allPosts = /*allPosts*/ ctx[7];
+			if (dirty & /*allContent*/ 64) completeposts_changes.allContent = /*allContent*/ ctx[6];
+			completeposts.$set(completeposts_changes);
+		},
+		i(local) {
+			if (current) return;
+			transition_in(completeposts.$$.fragment, local);
+			current = true;
+		},
+		o(local) {
+			transition_out(completeposts.$$.fragment, local);
+			current = false;
+		},
+		d(detaching) {
+			destroy_component(completeposts, detaching);
+		}
+	};
+}
+
+// (27:37) 
 function create_if_block_2(ctx) {
 	let h3;
 	let t;
@@ -63,7 +108,7 @@ function create_if_block_2(ctx) {
 	};
 }
 
-// (24:35) 
+// (25:35) 
 function create_if_block_1(ctx) {
 	let about;
 	let current;
@@ -113,7 +158,7 @@ function create_if_block_1(ctx) {
 	};
 }
 
-// (22:6) {#if current == "posts"}
+// (23:6) {#if current == "posts" }
 function create_if_block(ctx) {
 	let recentposts;
 	let current;
@@ -173,13 +218,14 @@ function create_fragment(ctx) {
 	let if_block;
 	let current;
 	nav = new Nav({ props: { current: /*current*/ ctx[2] } });
-	const if_block_creators = [create_if_block, create_if_block_1, create_if_block_2];
+	const if_block_creators = [create_if_block, create_if_block_1, create_if_block_2, create_if_block_3];
 	const if_blocks = [];
 
 	function select_block_type(ctx, dirty) {
 		if (/*current*/ ctx[2] == "posts") return 0;
 		if (/*current*/ ctx[2] == "about") return 1;
 		if (/*current*/ ctx[2] == "contact") return 2;
+		if (/*current*/ ctx[2] == "completeposts") return 3;
 		return -1;
 	}
 
@@ -333,7 +379,8 @@ function instance($$self, $$props, $$invalidate) {
 		{ body3 } = $$props,
 		{ allContent } = $$props,
 		{ components } = $$props,
-		{ allPosts } = $$props;
+		{ allPosts } = $$props,
+		{ sub } = $$props;
 
 	$$self.$$set = $$props => {
 		if ("title" in $$props) $$invalidate(0, title = $$props.title);
@@ -347,6 +394,7 @@ function instance($$self, $$props, $$invalidate) {
 		if ("allContent" in $$props) $$invalidate(6, allContent = $$props.allContent);
 		if ("components" in $$props) $$invalidate(10, components = $$props.components);
 		if ("allPosts" in $$props) $$invalidate(7, allPosts = $$props.allPosts);
+		if ("sub" in $$props) $$invalidate(11, sub = $$props.sub);
 	};
 
 	return [
@@ -360,7 +408,8 @@ function instance($$self, $$props, $$invalidate) {
 		allPosts,
 		description,
 		content,
-		components
+		components,
+		sub
 	];
 }
 
@@ -379,7 +428,8 @@ class Component extends SvelteComponent {
 			body3: 5,
 			allContent: 6,
 			components: 10,
-			allPosts: 7
+			allPosts: 7,
+			sub: 11
 		});
 	}
 }

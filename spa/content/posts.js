@@ -21,14 +21,14 @@ import {
 
 function get_each_context(ctx, list, i) {
 	const child_ctx = ctx.slice();
-	child_ctx[7] = list[i];
+	child_ctx[8] = list[i];
 	return child_ctx;
 }
 
 // (21:6) {#each body as paragraph}
 function create_each_block(ctx) {
 	let p;
-	let raw_value = /*paragraph*/ ctx[7] + "";
+	let raw_value = /*paragraph*/ ctx[8] + "";
 
 	return {
 		c() {
@@ -44,7 +44,69 @@ function create_each_block(ctx) {
 			p.innerHTML = raw_value;
 		},
 		p(ctx, dirty) {
-			if (dirty & /*body*/ 64 && raw_value !== (raw_value = /*paragraph*/ ctx[7] + "")) p.innerHTML = raw_value;;
+			if (dirty & /*body*/ 64 && raw_value !== (raw_value = /*paragraph*/ ctx[8] + "")) p.innerHTML = raw_value;;
+		},
+		d(detaching) {
+			if (detaching) detach(p);
+		}
+	};
+}
+
+// (28:4) {:else}
+function create_else_block(ctx) {
+	let p;
+	let t;
+
+	return {
+		c() {
+			p = element("p");
+			t = text("終わり");
+			this.h();
+		},
+		l(nodes) {
+			p = claim_element(nodes, "P", { class: true });
+			var p_nodes = children(p);
+			t = claim_text(p_nodes, "終わり");
+			p_nodes.forEach(detach);
+			this.h();
+		},
+		h() {
+			attr(p, "class", "tsuzuku svelte-1ffyrb3");
+		},
+		m(target, anchor) {
+			insert(target, p, anchor);
+			append(p, t);
+		},
+		d(detaching) {
+			if (detaching) detach(p);
+		}
+	};
+}
+
+// (26:4) {#if tsuzuku}
+function create_if_block(ctx) {
+	let p;
+	let t;
+
+	return {
+		c() {
+			p = element("p");
+			t = text("つづく");
+			this.h();
+		},
+		l(nodes) {
+			p = claim_element(nodes, "P", { class: true });
+			var p_nodes = children(p);
+			t = claim_text(p_nodes, "つづく");
+			p_nodes.forEach(detach);
+			this.h();
+		},
+		h() {
+			attr(p, "class", "tsuzuku svelte-1ffyrb3");
+		},
+		m(target, anchor) {
+			insert(target, p, anchor);
+			append(p, t);
 		},
 		d(detaching) {
 			if (detaching) detach(p);
@@ -64,8 +126,9 @@ function create_fragment(ctx) {
 	let h1;
 	let t3;
 	let t4;
-	let div;
+	let div0;
 	let span0;
+	let t5_value = /*date*/ ctx[1].replaceAll("/", ".") + "";
 	let t5;
 	let t6;
 	let span1;
@@ -77,12 +140,39 @@ function create_fragment(ctx) {
 	let t11;
 	let t12;
 	let article;
+	let t13;
+	let t14;
+	let div3;
+	let div1;
+	let span3;
+	let a0;
+	let t15;
+	let t16;
+	let div2;
+	let span4;
+	let a1;
+	let t17;
+	let t18;
+	let span5;
+	let t19;
+	let t20;
+	let span6;
+	let a2;
+	let t21;
 	let each_value = /*body*/ ctx[6];
 	let each_blocks = [];
 
 	for (let i = 0; i < each_value.length; i += 1) {
 		each_blocks[i] = create_each_block(get_each_context(ctx, each_value, i));
 	}
+
+	function select_block_type(ctx, dirty) {
+		if (/*tsuzuku*/ ctx[7]) return create_if_block;
+		return create_else_block;
+	}
+
+	let current_block_type = select_block_type(ctx, -1);
+	let if_block = current_block_type(ctx);
 
 	return {
 		c() {
@@ -96,9 +186,9 @@ function create_fragment(ctx) {
 			h1 = element("h1");
 			t3 = text(/*title*/ ctx[0]);
 			t4 = space();
-			div = element("div");
+			div0 = element("div");
 			span0 = element("span");
-			t5 = text(/*date*/ ctx[1]);
+			t5 = text(t5_value);
 			t6 = space();
 			span1 = element("span");
 			t7 = text("/ ");
@@ -114,6 +204,26 @@ function create_fragment(ctx) {
 				each_blocks[i].c();
 			}
 
+			t13 = space();
+			if_block.c();
+			t14 = space();
+			div3 = element("div");
+			div1 = element("div");
+			span3 = element("span");
+			a0 = element("a");
+			t15 = text("home");
+			t16 = space();
+			div2 = element("div");
+			span4 = element("span");
+			a1 = element("a");
+			t17 = text("recent posts");
+			t18 = space();
+			span5 = element("span");
+			t19 = text("/");
+			t20 = space();
+			span6 = element("span");
+			a2 = element("a");
+			t21 = text("complete posts");
 			this.h();
 		},
 		l(nodes) {
@@ -133,25 +243,25 @@ function create_fragment(ctx) {
 			t3 = claim_text(h1_nodes, /*title*/ ctx[0]);
 			h1_nodes.forEach(detach);
 			t4 = claim_space(header_nodes);
-			div = claim_element(header_nodes, "DIV", { class: true });
-			var div_nodes = children(div);
-			span0 = claim_element(div_nodes, "SPAN", { class: true });
+			div0 = claim_element(header_nodes, "DIV", { class: true });
+			var div0_nodes = children(div0);
+			span0 = claim_element(div0_nodes, "SPAN", { class: true });
 			var span0_nodes = children(span0);
-			t5 = claim_text(span0_nodes, /*date*/ ctx[1]);
+			t5 = claim_text(span0_nodes, t5_value);
 			span0_nodes.forEach(detach);
-			t6 = claim_space(div_nodes);
-			span1 = claim_element(div_nodes, "SPAN", { class: true });
+			t6 = claim_space(div0_nodes);
+			span1 = claim_element(div0_nodes, "SPAN", { class: true });
 			var span1_nodes = children(span1);
 			t7 = claim_text(span1_nodes, "/ ");
 			t8 = claim_text(span1_nodes, /*readTime*/ ctx[2]);
 			span1_nodes.forEach(detach);
-			t9 = claim_space(div_nodes);
-			span2 = claim_element(div_nodes, "SPAN", {});
+			t9 = claim_space(div0_nodes);
+			span2 = claim_element(div0_nodes, "SPAN", {});
 			var span2_nodes = children(span2);
 			t10 = claim_text(span2_nodes, "/ ");
 			t11 = claim_text(span2_nodes, /*author*/ ctx[3]);
 			span2_nodes.forEach(detach);
-			div_nodes.forEach(detach);
+			div0_nodes.forEach(detach);
 			header_nodes.forEach(detach);
 			t12 = claim_space(section_nodes);
 			article = claim_element(section_nodes, "ARTICLE", { class: true });
@@ -162,21 +272,68 @@ function create_fragment(ctx) {
 			}
 
 			article_nodes.forEach(detach);
+			t13 = claim_space(section_nodes);
+			if_block.l(section_nodes);
+			t14 = claim_space(section_nodes);
+			div3 = claim_element(section_nodes, "DIV", { class: true });
+			var div3_nodes = children(div3);
+			div1 = claim_element(div3_nodes, "DIV", {});
+			var div1_nodes = children(div1);
+			span3 = claim_element(div1_nodes, "SPAN", {});
+			var span3_nodes = children(span3);
+			a0 = claim_element(span3_nodes, "A", { href: true, class: true });
+			var a0_nodes = children(a0);
+			t15 = claim_text(a0_nodes, "home");
+			a0_nodes.forEach(detach);
+			span3_nodes.forEach(detach);
+			div1_nodes.forEach(detach);
+			t16 = claim_space(div3_nodes);
+			div2 = claim_element(div3_nodes, "DIV", {});
+			var div2_nodes = children(div2);
+			span4 = claim_element(div2_nodes, "SPAN", {});
+			var span4_nodes = children(span4);
+			a1 = claim_element(span4_nodes, "A", { href: true, class: true });
+			var a1_nodes = children(a1);
+			t17 = claim_text(a1_nodes, "recent posts");
+			a1_nodes.forEach(detach);
+			span4_nodes.forEach(detach);
+			t18 = claim_space(div2_nodes);
+			span5 = claim_element(div2_nodes, "SPAN", {});
+			var span5_nodes = children(span5);
+			t19 = claim_text(span5_nodes, "/");
+			span5_nodes.forEach(detach);
+			t20 = claim_space(div2_nodes);
+			span6 = claim_element(div2_nodes, "SPAN", {});
+			var span6_nodes = children(span6);
+			a2 = claim_element(span6_nodes, "A", { href: true, class: true });
+			var a2_nodes = children(a2);
+			t21 = claim_text(a2_nodes, "complete posts");
+			a2_nodes.forEach(detach);
+			span6_nodes.forEach(detach);
+			div2_nodes.forEach(detach);
+			div3_nodes.forEach(detach);
 			section_nodes.forEach(detach);
 			this.h();
 		},
 		h() {
 			if (img.src !== (img_src_value = "/assets/images/" + /*pic*/ ctx[4])) attr(img, "src", img_src_value);
-			attr(img, "alt", "title");
-			attr(img, "class", "svelte-17dn2c9");
+			attr(img, "alt", /*caption*/ ctx[5]);
+			attr(img, "class", "svelte-1ffyrb3");
 			attr(p, "class", "caption");
-			attr(h1, "class", " svelte-17dn2c9");
+			attr(h1, "class", " svelte-1ffyrb3");
 			attr(span0, "class", "");
 			attr(span1, "class", "");
-			attr(div, "class", "byLine svelte-17dn2c9");
-			attr(header, "class", " svelte-17dn2c9");
+			attr(div0, "class", "byLine svelte-1ffyrb3");
+			attr(header, "class", " svelte-1ffyrb3");
 			attr(article, "class", "");
-			attr(section, "class", "isMarginAutoCentered svelte-17dn2c9");
+			attr(a0, "href", "/");
+			attr(a0, "class", "svelte-1ffyrb3");
+			attr(a1, "href", "/posts");
+			attr(a1, "class", "svelte-1ffyrb3");
+			attr(a2, "href", "/completeposts");
+			attr(a2, "class", "svelte-1ffyrb3");
+			attr(div3, "class", "postnav isFlexBetween svelte-1ffyrb3");
+			attr(section, "class", "isMarginAutoCentered svelte-1ffyrb3");
 		},
 		m(target, anchor) {
 			insert(target, section, anchor);
@@ -189,15 +346,15 @@ function create_fragment(ctx) {
 			append(header, h1);
 			append(h1, t3);
 			append(header, t4);
-			append(header, div);
-			append(div, span0);
+			append(header, div0);
+			append(div0, span0);
 			append(span0, t5);
-			append(div, t6);
-			append(div, span1);
+			append(div0, t6);
+			append(div0, span1);
 			append(span1, t7);
 			append(span1, t8);
-			append(div, t9);
-			append(div, span2);
+			append(div0, t9);
+			append(div0, span2);
 			append(span2, t10);
 			append(span2, t11);
 			append(section, t12);
@@ -206,15 +363,40 @@ function create_fragment(ctx) {
 			for (let i = 0; i < each_blocks.length; i += 1) {
 				each_blocks[i].m(article, null);
 			}
+
+			append(section, t13);
+			if_block.m(section, null);
+			append(section, t14);
+			append(section, div3);
+			append(div3, div1);
+			append(div1, span3);
+			append(span3, a0);
+			append(a0, t15);
+			append(div3, t16);
+			append(div3, div2);
+			append(div2, span4);
+			append(span4, a1);
+			append(a1, t17);
+			append(div2, t18);
+			append(div2, span5);
+			append(span5, t19);
+			append(div2, t20);
+			append(div2, span6);
+			append(span6, a2);
+			append(a2, t21);
 		},
 		p(ctx, [dirty]) {
 			if (dirty & /*pic*/ 16 && img.src !== (img_src_value = "/assets/images/" + /*pic*/ ctx[4])) {
 				attr(img, "src", img_src_value);
 			}
 
+			if (dirty & /*caption*/ 32) {
+				attr(img, "alt", /*caption*/ ctx[5]);
+			}
+
 			if (dirty & /*caption*/ 32) set_data(t1, /*caption*/ ctx[5]);
 			if (dirty & /*title*/ 1) set_data(t3, /*title*/ ctx[0]);
-			if (dirty & /*date*/ 2) set_data(t5, /*date*/ ctx[1]);
+			if (dirty & /*date*/ 2 && t5_value !== (t5_value = /*date*/ ctx[1].replaceAll("/", ".") + "")) set_data(t5, t5_value);
 			if (dirty & /*readTime*/ 4) set_data(t8, /*readTime*/ ctx[2]);
 			if (dirty & /*author*/ 8) set_data(t11, /*author*/ ctx[3]);
 
@@ -240,12 +422,23 @@ function create_fragment(ctx) {
 
 				each_blocks.length = each_value.length;
 			}
+
+			if (current_block_type !== (current_block_type = select_block_type(ctx, dirty))) {
+				if_block.d(1);
+				if_block = current_block_type(ctx);
+
+				if (if_block) {
+					if_block.c();
+					if_block.m(section, t14);
+				}
+			}
 		},
 		i: noop,
 		o: noop,
 		d(detaching) {
 			if (detaching) detach(section);
 			destroy_each(each_blocks, detaching);
+			if_block.d();
 		}
 	};
 }
@@ -257,7 +450,8 @@ function instance($$self, $$props, $$invalidate) {
 		{ author } = $$props,
 		{ pic } = $$props,
 		{ caption } = $$props,
-		{ body } = $$props;
+		{ body } = $$props,
+		{ tsuzuku } = $$props;
 
 	$$self.$$set = $$props => {
 		if ("title" in $$props) $$invalidate(0, title = $$props.title);
@@ -267,9 +461,10 @@ function instance($$self, $$props, $$invalidate) {
 		if ("pic" in $$props) $$invalidate(4, pic = $$props.pic);
 		if ("caption" in $$props) $$invalidate(5, caption = $$props.caption);
 		if ("body" in $$props) $$invalidate(6, body = $$props.body);
+		if ("tsuzuku" in $$props) $$invalidate(7, tsuzuku = $$props.tsuzuku);
 	};
 
-	return [title, date, readTime, author, pic, caption, body];
+	return [title, date, readTime, author, pic, caption, body, tsuzuku];
 }
 
 class Component extends SvelteComponent {
@@ -283,7 +478,8 @@ class Component extends SvelteComponent {
 			author: 3,
 			pic: 4,
 			caption: 5,
-			body: 6
+			body: 6,
+			tsuzuku: 7
 		});
 	}
 }
