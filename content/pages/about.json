@@ -1,0 +1,25 @@
+{
+  "title": "about claxx",
+  "description": "all about claxx",
+  "created": "2021.04.28",
+  "pic": "minifig-02.jpg",
+  "body": [
+    "loves to draw.",
+    "does technical illustrations pretty well.",
+    "his first job was as a maintenance engineer for a heat treatment shop.",
+    "moved on to designing industrial equipments"
+  ],
+  "body2": [
+    "did his first paid web site gig on adobe golive! yey!",
+    "then found out about web development and loved it.",
+    "learned css and loved it even more!",
+    "currently learning svelte and plenti and having a blast!"
+  ],
+  "body3": [
+    "an okay cook",
+    "an okay fix-it guy.",
+    "still loves to learn new things",
+    "and everyday, for a few brilliant moments, when everything's firing okay in the brain, despite his ADD, does his best to be a decent human being."
+  ],
+  "current": "about"
+}

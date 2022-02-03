@@ -1,0 +1,12 @@
+{
+  "title": "posts",
+  "description": "all about claxx",
+  "created": "2021.04.28",
+  "body": [
+    "taking timeout to learn webdesign from code camp",
+    "trashing bad habits to make good ones",
+    "i've been using headers all the wrong way, all these years"
+  ],
+  "current": "posts",
+  "sub": "posts"
+}

@@ -1,0 +1,11 @@
+{
+  "routes": {
+    "behindthescenes": "/:filename",
+    "pages": "/:filename",
+    "posts": "/posts/:filename"
+  },
+  "build": "public",
+  "local": {
+    "port": 8080
+  }
+}
