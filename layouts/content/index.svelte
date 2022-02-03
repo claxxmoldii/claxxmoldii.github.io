@@ -9,13 +9,13 @@
     //The maximum is inclusive and the minimum is inclusive
   }
 
-  $: currentPage = content.pager;
- let postsPerPage = 3;
- let allPosts = allContent.filter(content => content.type == "blog");
- let totalPosts = allPosts.length;
- let totalPages = Math.ceil(totalPosts / postsPerPage);
-  $: postRangeHigh = currentPage * postsPerPage;
-  $: postRangeLow = postRangeHigh - postsPerPage;
+ //  $: currentPage = content.pager;
+ // let postsPerPage = 3;
+ // let allPosts = allContent.filter(content => content.type == "post");
+ // let totalPosts = allPosts.length;
+ // let totalPages = Math.ceil(totalPosts / postsPerPage);
+ //  $: postRangeHigh = currentPage * postsPerPage;
+ //  $: postRangeLow = postRangeHigh - postsPerPage;
 </script>
 
 <main class="isGrid">

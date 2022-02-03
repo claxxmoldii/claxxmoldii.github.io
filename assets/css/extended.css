@@ -34,6 +34,11 @@ solves collapsing margins
   justify-content: center;
 }
 
+.isFlexBetween {
+  display: flex;
+  justify-content: space-between;
+}
+
 .isGrid {
   display: grid;
 }

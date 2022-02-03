@@ -1,7 +1,8 @@
 {
-    "routes": {
+  "routes": {
     "behindthescenes": "/:filename",
-    "pages": "/:filename"
+    "pages": "/:filename",
+    "posts": "/posts/:filename"
   },
   "build": "public",
   "local": {

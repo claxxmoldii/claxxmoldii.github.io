@@ -7,9 +7,9 @@
 </script>
 
 <html lang="en">
-<Head title={makeTitle(content.filename)} {env}/>
+<Head title={makeTitle(content.filename)} />
 
-<body class="isGrid">  
+<body class="isGrid">
   <svelte:component this={layout} {...content.fields} {content} {allContent} {allLayouts} />
 
   <footer class="isFlexCentered">

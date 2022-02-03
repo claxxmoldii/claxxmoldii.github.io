@@ -1,6 +1,6 @@
 <footer class="">
   <span>
-    © 2021
+    © { new Date().getFullYear()}
     <a class="" href="/">
       claxx moldii
     </a>
@@ -12,9 +12,9 @@
   </span>
   <span>·</span>
   <span>
-    Theme
-    <a class="" href="https://themes.gohugo.io/theme/manis-hugo-theme/" rel="noopener" target="_blank">
-      Manis-ish
+    Theme inspired by
+    <a class="" href="https://github.com/yursan9/manis-hugo-theme" rel="noopener" target="_blank">
+      Manis
     </a>
   </span>
 </footer>

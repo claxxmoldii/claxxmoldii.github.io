@@ -66,6 +66,7 @@
     <li>update good! move on! yosh! go!<span class="date">/2021.08.14</span></li>
     <li>good save... i think i don't need the env base thing here just yet. commit this!<span class="date">/2021.09.07</span></li>
     <li>css not loading on refresh, fixed by jim fisk. issue is leading front-slash on link tag inside head.svelte. yey! pull changes from origin and merged with local. woohoo! game on! <span class="date">/2021.09.21</span></li>
+    <li>updated to plenti v.0.5.00 <span class="date rebuild">/2022.01.21</span></li>
   </ul>
 
 <style>

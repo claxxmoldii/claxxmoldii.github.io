@@ -1,16 +1,16 @@
 <script>
-    export let title, date, readTime, author, pic, caption, body;
+    export let title, date, readTime, author, pic, caption, body, tsuzuku;
 </script>
 
 <section class="isMarginAutoCentered">
 
-    <img src="/assets/images/{pic}" alt="title">
+    <img src="/assets/images/{pic}" alt="{caption}">
     <p class="caption">{caption}</p>
 
     <header class="">
     <h1 class="">{ title }</h1>
     <div class="byLine">
-      <span class="">{ date }</span>
+      <span class="">{ date.replaceAll('/', '.') }</span>
       <span class="">/ { readTime }</span>
       <span>/ { author }</span>
     </div>
@@ -22,6 +22,22 @@
         <p>{@html paragraph}</p>
       {/each}
     </article>
+
+    {#if tsuzuku}
+      <p class="tsuzuku">つづく</p>
+    {:else}
+      <p class="tsuzuku">終わり</p>
+    {/if}
+      <div class="postnav isFlexBetween">
+      <div>
+        <span><a href="/">home</a></span>
+      </div>
+      <div>
+      <span><a href="/posts">recent posts</a></span>
+      <span>/</span>
+      <span><a href="/completeposts">complete posts</a></span>
+      </div>
+    </div>
 
 </section>
 
@@ -56,4 +72,26 @@
     color:  pink;
     text-decoration:  none;
   }
+
+  .tsuzuku {
+    text-align: end;
+  }
+
+  .postnav {
+    border-top: solid tomato 1px;
+    padding-top: 1rem;
+    margin-top:  4rem;
+    color: tomato;
+  }
+
+  .postnav a {
+    text-decoration:  none;
+    color: tomato;
+  }
+
+  .postnav a:hover {
+    text-decoration:  underline;
+  }
+
+
 </style>

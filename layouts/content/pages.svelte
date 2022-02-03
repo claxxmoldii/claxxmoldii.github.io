@@ -1,9 +1,10 @@
 <script>
   import Nav from "../global/nav.svelte";
   import RecentPosts from "../components/posts/recentposts.svelte";
+  import Completeposts from "../components/posts/completeposts.svelte";
   import About from "../components/pages/about.svelte";
 
-  export let title, pic, description, content, current, body, body2, body3, allContent, components, allPosts;
+  export let title, pic, description, content, current, body, body2, body3, allContent, components, allPosts, sub;
 </script>
 
 <main class="isGrid">
@@ -19,12 +20,15 @@
     </div>
 
     <div class="isContent">
-      {#if current == "posts"}
-        <RecentPosts {allPosts} {allContent}/>
+      {#if current == "posts" }
+        <RecentPosts {allPosts} {allContent} />
       {:else if current == "about"}
         <About {title} {body} {body2} {body3} {pic}/>
       {:else if current == "contact"}
         <h3>contact!</h3>
+      {:else if current == "completeposts"}
+        <Completeposts {allPosts} {allContent} />
+        <!-- yeah... -->
       {/if}
     </div>
   </section>
