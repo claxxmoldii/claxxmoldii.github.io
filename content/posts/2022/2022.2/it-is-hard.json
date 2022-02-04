@@ -21,7 +21,9 @@
 
     "but it's hard..."
   ],
+  "tsuzuku": "",
+  "owari": true,
   "tags": ["blogging", "web development"],
-  "category": "webdev",
+  "category": "perhaps",
   "post": true
 }
