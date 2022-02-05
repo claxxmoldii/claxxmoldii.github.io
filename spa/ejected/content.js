@@ -687,6 +687,41 @@ const allContent = [{
   "post": true
 }
 
+},{
+"pager": 1,
+"path": "/posts/it-is-hard",
+"type": "posts",
+"filename": "it-is-hard.json",
+"fields": {
+  "title": "Building a Blog is Haaaaaaaard...",
+  "year": "2022",
+  "month": "2022.2",
+  "date": "2022/2/4",
+  "readTime": "",
+  "author": "claxx moldii",
+  "pic": "2022-2-4.jpg",
+  "caption": "ole typewriter",
+  "teaser": "",
+  "body": [
+    "building a blog is haaaaaaaaard...",
+
+    "building your own site is even harder. i decided to create my own because i wanted to find out for myself.",
+
+    "there are stuff that comes easy to me. creating a website is not one of them. i acknowledge that i'm not very bright; and this alone should explain everything. but... okay, yeah. that. and my ADD.",
+
+    "but that shall not deter me from creating... and learning... and building... and posting...",
+
+    "i shall double my efforts...",
+
+    "but it's hard..."
+  ],
+  "tsuzuku": "",
+  "owari": true,
+  "tags": ["blogging", "web development"],
+  "category": "perhaps",
+  "post": true
+}
+
 },];
 
 export default allContent;
