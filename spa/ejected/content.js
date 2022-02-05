@@ -699,7 +699,7 @@ const allContent = [{
   "date": "2022/2/4",
   "readTime": "",
   "author": "claxx moldii",
-  "pic": "2022-2-4.jpg",
+  "pic": "ole-typewriter.jpg",
   "caption": "ole typewriter",
   "teaser": "",
   "body": [
